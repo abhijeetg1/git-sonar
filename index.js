@@ -1,5 +1,7 @@
-// Sample application code for SonarQube scanning R&D
-const HARDCODED_AWS_SECRET = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"; // Security vulnerability for SonarQube test
+// High-severity security vulnerability for SonarQube Quality Gate test (Code Injection / Unsafe Eval)
+function executeDynamicCode(userInput) {
+  return eval(userInput); // SonarQube Critical Security Vulnerability!
+}
 
 
 function calculateDiscount(price, discountPercent) {

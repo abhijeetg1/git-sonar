@@ -1,6 +1,6 @@
-/**
- * Simple sample application module for git-sonar R&D
- */
+// Sample application code for SonarQube scanning R&D
+const HARDCODED_AWS_SECRET = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"; // Security vulnerability for SonarQube test
+
 
 function calculateDiscount(price, discountPercent) {
   if (price <= 0 || discountPercent < 0 || discountPercent > 100) {

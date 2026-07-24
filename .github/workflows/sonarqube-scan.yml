@@ -5,10 +5,15 @@ on:
     branches:
       - main
       - develop
+      - 'feature/**'
+      - 'bugfix/**'
   push:
     branches:
       - main
       - develop
+      - 'feature/**'
+      - 'bugfix/**'
+
 
 jobs:
   sonarqube:

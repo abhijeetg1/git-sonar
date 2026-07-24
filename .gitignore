@@ -1,0 +1,16 @@
+# GitHub Actions Runner (local machine binaries & work folder)
+actions-runner/
+
+# SonarQube Scanner working files
+.scannerwork/
+.sonar/
+
+# Dependencies & Build Outputs
+node_modules/
+dist/
+build/
+
+# Logs & OS files
+*.log
+.DS_Store
+Thumbs.db

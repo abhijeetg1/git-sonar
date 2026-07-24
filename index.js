@@ -1,6 +1,8 @@
-/**
- * Simple sample application module for git-sonar R&D
- */
+// High-severity security vulnerability for SonarQube Quality Gate test (Code Injection / Unsafe Eval)
+function executeDynamicCode(userInput) {
+  return eval(userInput); // SonarQube Critical Security Vulnerability!
+}
+
 
 
 function calculateDiscount(price, discountPercent) {

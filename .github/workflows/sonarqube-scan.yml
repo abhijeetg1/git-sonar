@@ -5,38 +5,23 @@ on:
     branches:
       - main
       - develop
-      - 'feature/**'
-      - 'bugfix/**'
   push:
     branches:
       - main
       - develop
-      - 'feature/**'
-      - 'bugfix/**'
-
 
 jobs:
   sonarqube:
     name: SonarQube Vulnerability Scan
     runs-on: self-hosted
 
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          # Disabling shallow clone is recommended for accurate SonarQube blame & differential analysis
           fetch-depth: 0
 
-      - name: Run SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@v5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
-      - name: Evaluate SonarQube Quality Gate
-        uses: sonarsource/sonarqube-quality-gate-action@v1
-        timeout-minutes: 5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - name: Run SonarQube Scan & Quality Gate Check
+        shell: powershell
+        run: |
+          docker run --rm -v "${{ github.workspace }}:/usr/src" sonarsource/sonar-scanner-cli "-Dsonar.host.url=http://host.docker.internal:9000" "-Dsonar.token=${{ secrets.SONAR_TOKEN }}" "-Dsonar.projectKey=git-sonar" "-Dsonar.qualitygate.wait=true"
